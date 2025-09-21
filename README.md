@@ -1,4 +1,3 @@
-````
 # Projeto Conta Bancária - Java
 
 <br />
@@ -180,4 +179,3 @@ Este repositório é parte de um projeto educacional, mas contribuições são s
 
 Desenvolvido por [**Thuany**](https://github.com/ThuanyAline/ContaBancariat83)
 Para dúvidas, sugestões ou colaborações, entre em contato via GitHub ou abra uma issue!
-````
