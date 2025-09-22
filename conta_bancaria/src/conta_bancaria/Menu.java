@@ -2,6 +2,7 @@ package conta_bancaria;
 
 import java.util.Scanner;
 
+import conta_bancaria.model.Conta;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -12,13 +13,40 @@ public class Menu {
 		Scanner leia = new Scanner(System.in);
 
 		int opcao;
+		
+		// INSTANCIAR OBJETOS DA CLASSE CONTA numero da conta, agencia, tipo conta correte titular da conta, saldo da conta
+		
+		Conta c1 = new Conta(1, 123, 1, "Thuany Silva", 50000.00f);
+		
+		Conta c2 = new Conta(2, 123, 2, "Telma Alves", 50000.00f);
 
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+
+		c1.getSaldo();
+		
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+
+		c1.visualizar();
+		
+		c2.visualizar();
+		
+		System.out.println(c1.sacar(1000));
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+
+		System.out.println(c2.sacar(10000000));
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+
+		c1.depositar(5000);
+		System.out.println("O saldo da conta é: " + c1.getSaldo());
+
+
+		
 		// VOU USAR A OPCAO WHILE PARA APARECER O MENU PQ NÃO PRECISA ACONTECER NADA
 		// ANTES PARA A TELA APARECER
 		while (true) {
 
 			System.out.println(Cores.TEXT_BLACK + Cores.ANSI_YELLOW_BACKGROUND
-					+ "****************************************************");
+					+ "***********************************************");
 			System.out.println("***********************************************");
 			System.out.println("                                               ");
 			System.out.println("               BANCO DO MALOTE                 ");
@@ -26,7 +54,7 @@ public class Menu {
 			System.out.println("***********************************************");
 			System.out.println("                                               ");
 			System.out.println("        1 - Criar Conta                        ");
-			System.out.println("        2-  Listar todas as Contas              ");
+			System.out.println("        2-  Listar todas as Contas             ");
 			System.out.println("        3 - Buscar Conta por Número            ");
 			System.out.println("        4 - Atualizar Dados da Conta           ");
 			System.out.println("        5 - Apagar Conta                       ");
