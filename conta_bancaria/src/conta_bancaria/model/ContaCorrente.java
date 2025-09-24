@@ -28,7 +28,6 @@ public class ContaCorrente extends Conta{
 		
 		}
 		 this.setSaldo(this.getSaldo() - valor);
-		 
 		 return true;
 	}
 	// CRIADO P VIZUALIZAR NO MENU A AOPÇÃO DO LIMITE (polimorfismo)

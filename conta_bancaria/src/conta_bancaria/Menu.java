@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import conta_bancaria.model.Conta;
 import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -58,6 +59,21 @@ public class Menu {
 		cc1.depositar(5000.00f);
 		cc1.visualizar();
 	
+		// estanciar objetos da Conta Poupança
+		ContaPoupanca cp1 = new ContaPoupanca(4, 457, 2, "Ana Lemos", 7000.00f, 10.00f);
+		cp1.visualizar();
+		
+		// SACAR DA CONTA POUPANÇA
+				System.out.println(cp1.sacar(20000.00f));
+				cc1.visualizar();
+				
+				System.out.println(cp1.sacar(200.00f));
+				cp1.visualizar();
+				
+				// DEPOSISTAR NA CONTA POUPANÇA
+				cp1.depositar(50.00f);
+				cp1.visualizar();
+				
 		
 		// VOU USAR A OPCAO WHILE PARA APARECER O MENU PQ NÃO PRECISA ACONTECER NADA
 		// ANTES PARA A TELA APARECER
