@@ -19,6 +19,10 @@ public class Conta {
 		this.titular = titular;
 		this.saldo = saldo;
 	}
+	// sobrecarga de metodos, criando na mesma classe o mesmo método, com paremetros diferentes, ATRIBUTOS da conta 
+	public Conta() {}
+	
+	
     // MÉTODOS get e set
 
 	public int getNumero() {
@@ -64,7 +68,7 @@ public class Conta {
 	
 	public boolean sacar(float valor) {
 		if(this.saldo < valor) {
-		System.out.println("\nsSaldo Insuficiente!");
+		System.out.println("\nSaldo Insuficiente!");
 		return false;
 		
 		}

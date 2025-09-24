@@ -3,6 +3,7 @@ package conta_bancaria;
 import java.util.Scanner;
 
 import conta_bancaria.model.Conta;
+import conta_bancaria.model.ContaCorrente;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -16,7 +17,7 @@ public class Menu {
 		
 		// INSTANCIAR OBJETOS DA CLASSE CONTA numero da conta, agencia, tipo conta correte titular da conta, saldo da conta
 		
-		Conta c1 = new Conta(1, 123, 1, "Thuany Silva", 50000.00f);
+		Conta c1 = new Conta(1, 123, 1, "Tayná Alves", 50000.00f);
 		
 		Conta c2 = new Conta(2, 123, 2, "Telma Alves", 50000.00f);
 
@@ -27,8 +28,9 @@ public class Menu {
 		System.out.println("O saldo da conta é: " + c1.getSaldo());
 
 		c1.visualizar();
-		
+
 		c2.visualizar();
+		
 		
 		System.out.println(c1.sacar(1000));
 		System.out.println("O saldo da conta é: " + c1.getSaldo());
@@ -39,10 +41,27 @@ public class Menu {
 		c1.depositar(5000);
 		System.out.println("O saldo da conta é: " + c1.getSaldo());
 
-
+         // instranciar objetos da Classe ContaCorrente
+		
+		ContaCorrente cc1 = new ContaCorrente(3, 456, 1, "Thuany Silva", 1000000.00f, 100000.00f);
+		
+		cc1.visualizar();
+		
+		// SACAR DA CONTA CORRENTE
+		System.out.println(cc1.sacar(2000000.00f));
+		cc1.visualizar();
+		
+		System.out.println(cc1.sacar(200.00f));
+		cc1.visualizar();
+		
+		// DEPOSISTAR NA CONTA CORRENTE
+		cc1.depositar(5000.00f);
+		cc1.visualizar();
+	
 		
 		// VOU USAR A OPCAO WHILE PARA APARECER O MENU PQ NÃO PRECISA ACONTECER NADA
 		// ANTES PARA A TELA APARECER
+		
 		while (true) {
 
 			System.out.println(Cores.TEXT_BLACK + Cores.ANSI_YELLOW_BACKGROUND
