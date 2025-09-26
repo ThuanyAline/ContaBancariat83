@@ -1,82 +1,25 @@
 package conta_bancaria;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import conta_bancaria.model.Conta;
+import conta_bancaria.controller.ContaController;
 import conta_bancaria.model.ContaCorrente;
 import conta_bancaria.model.ContaPoupanca;
 import conta_bancaria.util.Cores;
 
 public class Menu {
-
+	
+	private static final Scanner leia = new Scanner(System.in);
+	private static final ContaController contaController = new ContaController();
+	
 	public static void main(String[] args) {
 
 		// PRECISO CRIAR UM MENU PARA O BANCO MALOTES COM ALGUMAS OPCOES
-		Scanner leia = new Scanner(System.in);
 
 		int opcao;
 		
-		// INSTANCIAR OBJETOS DA CLASSE CONTA numero da conta, agencia, tipo conta correte titular da conta, saldo da conta
-		
-		Conta c1 = new Conta(1, 123, 1, "Tayná Alves", 50000.00f);
-		
-		Conta c2 = new Conta(2, 123, 2, "Telma Alves", 50000.00f);
-
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
-
-		c1.getSaldo();
-		
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
-
-		c1.visualizar();
-
-		c2.visualizar();
-		
-		
-		System.out.println(c1.sacar(1000));
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
-
-		System.out.println(c2.sacar(10000000));
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
-
-		c1.depositar(5000);
-		System.out.println("O saldo da conta é: " + c1.getSaldo());
-
-         // instranciar objetos da Classe ContaCorrente
-		
-		ContaCorrente cc1 = new ContaCorrente(3, 456, 1, "Thuany Silva", 1000000.00f, 100000.00f);
-		
-		cc1.visualizar();
-		
-		// SACAR DA CONTA CORRENTE
-		System.out.println(cc1.sacar(2000000.00f));
-		cc1.visualizar();
-		
-		System.out.println(cc1.sacar(200.00f));
-		cc1.visualizar();
-		
-		// DEPOSISTAR NA CONTA CORRENTE
-		cc1.depositar(5000.00f);
-		cc1.visualizar();
-	
-		// estanciar objetos da Conta Poupança
-		ContaPoupanca cp1 = new ContaPoupanca(4, 457, 2, "Ana Lemos", 7000.00f, 10.00f);
-		cp1.visualizar();
-		
-		// SACAR DA CONTA POUPANÇA
-				System.out.println(cp1.sacar(20000.00f));
-				cc1.visualizar();
-				
-				System.out.println(cp1.sacar(200.00f));
-				cp1.visualizar();
-				
-				// DEPOSISTAR NA CONTA POUPANÇA
-				cp1.depositar(50.00f);
-				cp1.visualizar();
-				
-		
-		// VOU USAR A OPCAO WHILE PARA APARECER O MENU PQ NÃO PRECISA ACONTECER NADA
-		// ANTES PARA A TELA APARECER
+		criarContasTeste();
 		
 		while (true) {
 
@@ -100,9 +43,15 @@ public class Menu {
 			System.out.println("***********************************************");
 			System.out.println("        Entre com a opção desejada             ");
 			System.out.println("                                               " + Cores.TEXT_RESET);
-
+            
+			try {
 			opcao = leia.nextInt();
-
+			     leia.nextLine();
+			}catch(InputMismatchException e) {
+				opcao = -1;
+				System.out.println("Digite um número inteiro entre 0 e 8"); 
+				leia.nextLine();
+			}
 			if (opcao == 0) {
 				System.out.println(Cores.TEXT_RED_BOLD + " \nBanco do Malote - O seu futuro começa aqui! ");
 				sobre();
@@ -113,39 +62,48 @@ public class Menu {
 			switch (opcao) {
 			case 1:
 				System.out.println(Cores.TEXT_RED_BOLD + "Criar Conta \n\n");
-
+				keyPress();
 				break;
 			case 2:
 				System.out.println(Cores.TEXT_RED_BOLD + "Listar todas as Contas\n\n");
-
-				break;
+				listarContas();
+				keyPress();
+                break;
 			case 3:
 				System.out.println(Cores.TEXT_RED_BOLD + "Consultar dados da Conta - por núemro\n\n");
+				keyPress();
 
 				break;
 			case 4:
 				System.out.println(Cores.TEXT_RED_BOLD + "Atualizar dados da Conta\n\n");
+				keyPress();
 
 				break;
 			case 5:
 				System.out.println(Cores.TEXT_RED_BOLD + "Apagar a Conta\n\n");
+				keyPress();
 
 				break;
 			case 6:
 				System.out.println(Cores.TEXT_RED_BOLD + "Saque\n\n");
+				keyPress();
 
 				break;
 			case 7:
 				System.out.println(Cores.TEXT_RED_BOLD + "Depósito\n\n");
+				keyPress();
 
 				break;
 
 			case 8:
 				System.out.println(Cores.TEXT_RED_BOLD + "Transferência entre Contas\n\n");
+				keyPress();
 
 				break;
 			default:
 				System.out.println(Cores.TEXT_RED_BOLD + "\nOpçao Inválida\n");
+				keyPress();
+
 				break;
 			}
 
@@ -161,5 +119,17 @@ public class Menu {
 		System.out.println("*****************************************************");
 
 	}
+    public static void keyPress() {
+    	System.out.println(Cores.TEXT_RESET + "\n\nPressione Entre Para Continuar");
+        leia.nextLine(); 
+    }
+    private static void criarContasTeste() {
+    	contaController.cadastrar(new ContaCorrente(1, 456, 1, "Thuany Silva", 1000000.00f, 100000.00f));
+    	contaController.cadastrar(new ContaPoupanca(2, 456, 2, "Marcia", 1000000.00f, 10));
 
+    }
+    private static void listarContas() {
+    	contaController.listarTodas();
+    }
 }
+
